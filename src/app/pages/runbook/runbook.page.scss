@@ -1,0 +1,60 @@
+ion-card-header {
+  padding-bottom: 5px !important;
+}
+
+ion-segment-button > ion-label {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.swipe-menu-text {
+  font-size: 90%;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.swipe-menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.list-md {
+  padding-top: 0px;
+}
+
+.item-search {
+  --background: var(--ion-item-background,var(--ion-background-color,#ccc));
+  --min-height: 0px !important;
+  --highlight-color-focused: transparent !important;
+}
+
+.sc-ion-searchbar-ios-h {
+  padding-bottom: 0px;
+  height: 48px;
+}
+
+.subtoolbar {
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --min-height: 30px;
+  --color: #fff;
+  --background: #3171e0;
+}
+
+.subtoolbar-icon {
+  padding-inline-start: 12px !important;
+  padding-inline-end: 12px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  font-size: 1.6em !important;
+}
+
+.grid-review {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  background: lightblue;
+}
+
+.car-review {
+  background: #fff;
+}

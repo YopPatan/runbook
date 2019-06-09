@@ -4,17 +4,45 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'runbook',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    path: 'login',
+    loadChildren: './pages/login/login.module#LoginPageModule'
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'runbook',
+    loadChildren: './pages/runbook/runbook.module#RunbookPageModule'
+  },
+  {
+    path: 'pending',
+    loadChildren: './pages/pending/pending.module#PendingPageModule'
+  },
+  {
+    path: 'milestone',
+    loadChildren: './pages/milestone/milestone.module#MilestonePageModule'
   }
+  /*
+  {
+    path: 'runbook',
+    children:
+        [
+          {
+            path: 'tab1',
+            loadChildren: './pages/runbook/runbook.module#RunbookPageModule'
+          },
+          {
+            path: 'tab2',
+            loadChildren: './pages/runbook/runbook.module#RunbookPageModule'
+          },
+          {
+            path: '',
+            loadChildren: './pages/runbook/runbook.module#RunbookPageModule'
+          }
+        ]
+  }
+  */
 ];
 
 @NgModule({
