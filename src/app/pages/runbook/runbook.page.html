@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="runbook">
 
   <app-tabbar></app-tabbar>
 
@@ -19,7 +19,7 @@
       <ion-icon *ngIf="!viewTimes" slot="icon-only" name="play" class="subtoolbar-icon" style="transform: rotate(90deg);"></ion-icon>
       <ion-icon *ngIf="viewTimes" slot="icon-only" name="play" class="subtoolbar-icon" style="transform: rotate(-90deg);"></ion-icon>
     </ion-buttons>
-    <ion-title>Mayo 2019</ion-title>
+    <ion-title>{{runbook.period}}</ion-title>
   </ion-toolbar>
 
   <ion-grid class="grid-review" *ngIf="viewTimes">
@@ -29,7 +29,7 @@
           <ion-card-header>
             <ion-card-subtitle>Atraso Actual (h)</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content><h1>02:30</h1></ion-card-content>
+          <ion-card-content><h1>{{runbook.currentDelay}}</h1></ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col>
@@ -37,25 +37,25 @@
           <ion-card-header>
             <ion-card-subtitle>Estimación envío BR</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content><h1>06/05/2019</h1></ion-card-content>
+          <ion-card-content><h1>{{runbook.estimateDate}}</h1></ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="antes" checked>
+  <ion-segment (ionChange)="changeDate($event)">
+    <ion-segment-button value="prev">
       <ion-label>Anteriores</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="hoy">
+    <ion-segment-button value="today" checked>
       <ion-label>Hoy</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="siguiente">
+    <ion-segment-button value="next">
       <ion-label>Siguientes</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-  <app-milestones></app-milestones>
+  <app-milestones [milestones]="milestonesByDate"></app-milestones>
 
 
 </ion-content>

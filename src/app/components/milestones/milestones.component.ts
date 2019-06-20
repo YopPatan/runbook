@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NavController} from '@ionic/angular';
+import {Milestone} from "../../models/milestone";
 
 @Component({
   selector: 'app-milestones',
@@ -7,6 +8,9 @@ import {NavController} from '@ionic/angular';
   styleUrls: ['./milestones.component.scss'],
 })
 export class MilestonesComponent implements OnInit {
+
+  @Input()
+  milestones: Milestone[];
 
   constructor(public navCtrl: NavController) { }
 
