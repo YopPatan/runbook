@@ -21,7 +21,7 @@ export class RunbookPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.runbookService.getMilestones().subscribe(data => {
+    this.runbookService.getRunbook().subscribe(data => {
       // console.log(data);
       this.runbook = data;
     });

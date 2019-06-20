@@ -52,12 +52,15 @@ if( requestBody.contains("some data") )
 }
 */
 </con:dispatchPath><con:response name="default" id="78b7fcd5-2fd1-42cd-8f38-98223eb833cb" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{
+	"id": 1,
 	"period": "2019-06-01",
 	"estimateDate": "2019-06-18",
 	"currentDelay": "02:00",
 	"milestones": [
 		{
 			"id": 1,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 1",
 			"code": "H1",
 			"delay": "00:00",
@@ -65,6 +68,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 2,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 2",
 			"code": "H1",
 			"delay": "00:00",
@@ -72,6 +77,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 3,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 3",
 			"code": "H1",
 			"delay": "00:00",
@@ -79,6 +86,8 @@ if( requestBody.contains("some data") )
 		},
 			{
 			"id": 1,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 4",
 			"code": "H1",
 			"delay": "00:00",
@@ -86,6 +95,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 2,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 5",
 			"code": "H1",
 			"delay": "00:00",
@@ -93,6 +104,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 3,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 6",
 			"code": "H1",
 			"delay": "00:00",
@@ -100,6 +113,8 @@ if( requestBody.contains("some data") )
 		},
 			{
 			"id": 1,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 7",
 			"code": "H1",
 			"delay": "00:00",
@@ -107,6 +122,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 2,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 8",
 			"code": "H1",
 			"delay": "00:00",
@@ -114,6 +131,8 @@ if( requestBody.contains("some data") )
 		},
 		{
 			"id": 3,
+			"idStatus": 1,
+			"idPerson": 1,
 			"name": "Nombre hito 9",
 			"code": "H1",
 			"delay": "00:00",
@@ -172,8 +191,50 @@ if( requestBody.contains("some data") )
     return "Response N"
 }
 */
-</con:dispatchPath><con:response name="default" id="ae654b8b-6941-4509-81e5-2d95a09d0739" httpResponseStatus="200"><con:settings/><con:responseContent>[
+</con:dispatchPath><con:response name="default" id="ae654b8b-6941-4509-81e5-2d95a09d0739" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>[
 	{
-		"id": 1
+		"id": 1,
+		"idMilestone": 1,
+		"idStatus": 1,
+		"name": "Nombre actividad 1",
+		"description": "Descripcion larga de la actividad 1",
+		"code": "AC1",
+		"delay": "00:00"
+	},
+	{
+		"id": 2,
+		"idMilestone": 1,
+		"idStatus": 1,
+		"name": "Nombre actividad 1",
+		"description": "Descripcion larga de la actividad 1",
+		"code": "AC1",
+		"delay": "00:00"
+	},
+	{
+		"id": 3,
+		"idMilestone": 1,
+		"idStatus": 1,
+		"name": "Nombre actividad 1",
+		"description": "Descripcion larga de la actividad 1",
+		"code": "AC1",
+		"delay": "00:00"
+	},
+	{
+		"id": 4,
+		"idMilestone": 1,
+		"idStatus": 1,
+		"name": "Nombre actividad 1",
+		"description": "Descripcion larga de la actividad 1",
+		"code": "AC1",
+		"delay": "00:00"
+	},
+	{
+		"id": 5,
+		"idMilestone": 1,
+		"idStatus": 1,
+		"name": "Nombre actividad 1",
+		"description": "Descripcion larga de la actividad 1",
+		"code": "AC1",
+		"delay": "00:00"
 	}
-]</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+]</con:responseContent><con:header><con:name>Access-Control-Allow-Origin</con:name><con:value>*</con:value></con:header><con:header><con:name>Access-Control-Allow-Methods</con:name><con:value>GET</con:value></con:header><con:header><con:name>Access-Control-Allow-Headers</con:name><con:value>*</con:value></con:header></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
