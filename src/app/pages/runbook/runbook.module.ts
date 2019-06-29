@@ -6,8 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RunbookPage } from './runbook.page';
-import {MilestonesComponent} from '../../components/milestones/milestones.component';
-import {TabbarComponent} from '../../components/tabbar/tabbar.component';
+import {ComponentsModule} from "../../components/components.module";
 
 const routes: Routes = [
   {
@@ -19,10 +18,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RunbookPage, MilestonesComponent, TabbarComponent]
+  declarations: [RunbookPage]
 })
 export class RunbookPageModule {}

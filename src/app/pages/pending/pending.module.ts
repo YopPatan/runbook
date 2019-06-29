@@ -6,8 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PendingPage } from './pending.page';
-import {ActivitiesComponent} from '../../components/activities/activities.component';
-import {TabbarComponent} from '../../components/tabbar/tabbar.component';
+import {ComponentsModule} from "../../components/components.module";
 
 const routes: Routes = [
   {
@@ -19,10 +18,11 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
+        ComponentsModule,
         FormsModule,
         IonicModule,
         RouterModule.forChild(routes)
     ],
-  declarations: [PendingPage, ActivitiesComponent, TabbarComponent]
+  declarations: [PendingPage]
 })
 export class PendingPageModule {}

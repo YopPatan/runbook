@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MilestonePage } from './milestone.page';
-import {ActivitiesComponent} from '../../components/activities/activities.component';
+import {ComponentsModule} from "../../components/components.module";
 
 const routes: Routes = [
   {
@@ -18,10 +18,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-    declarations: [ActivitiesComponent, MilestonePage]
+  declarations: [MilestonePage]
 })
 export class MilestonePageModule {}

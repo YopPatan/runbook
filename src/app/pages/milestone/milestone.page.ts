@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
+import {RunbookService} from "../../services/runbook.service";
+import {Milestone} from "../../models/milestone";
 
 @Component({
   selector: 'app-milestone',
@@ -7,10 +9,18 @@ import {NavController} from '@ionic/angular';
   styleUrls: ['./milestone.page.scss'],
 })
 export class MilestonePage implements OnInit {
+  milestone: Milestone;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+      private runbookService: RunbookService,
+      public navCtrl: NavController
+  ) { }
 
   ngOnInit() {
+    this.runbookService.getMilestone().subscribe(data => {
+      // console.log(data);
+      this.milestone = data;
+    });
   }
 
   goBack() {
