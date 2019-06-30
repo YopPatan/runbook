@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: './pages/pending/pending.module#PendingPageModule'
   },
   {
-    path: 'milestone',
+    path: 'milestone/:id',
     loadChildren: './pages/milestone/milestone.module#MilestonePageModule'
   }
   /*

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {RunbookService} from "../../services/runbook.service";
 import {Milestone} from "../../models/milestone";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-milestone',
@@ -9,16 +10,21 @@ import {Milestone} from "../../models/milestone";
   styleUrls: ['./milestone.page.scss'],
 })
 export class MilestonePage implements OnInit {
+  idMilestone: number;
   milestone: Milestone;
 
   constructor(
       private runbookService: RunbookService,
-      public navCtrl: NavController
+      public navCtrl: NavController,
+      private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.runbookService.getMilestone().subscribe(data => {
-      // console.log(data);
+    this.idMilestone = parseInt(this.route.snapshot.paramMap.get('id'));
+    //console.log(this.idMilestone);
+    let request = { idMilestone: this.idMilestone };
+    this.runbookService.getMilestone(request).subscribe(data => {
+      //console.log(data);
       this.milestone = data;
     });
   }

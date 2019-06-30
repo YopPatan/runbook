@@ -10,7 +10,9 @@ import {Milestone} from "../models/milestone";
 })
 export class RunbookService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    //console.log('CONSTRUCTOR');
+  }
 
   getRunbook(): Observable<Runbook> {
     //return this.http.get<Runbook>('https://test-patan.firebaseio.com/runbook.json?print=pretty&format=export');
@@ -22,9 +24,9 @@ export class RunbookService {
     return this.http.post<Activity[]>('http://localhost:8080/runbook/pending', {});
   }
 
-  getMilestone(): Observable<Milestone> {
+  getMilestone(request): Observable<Milestone> {
     //return this.http.get<Milestone>('https://test-patan.firebaseio.com/milestone.json?print=pretty&format=export');
-    return this.http.post<Milestone>('http://localhost:8080/runbook/milestone', {});
+    return this.http.post<Milestone>('http://localhost:8080/runbook/milestone', request);
   }
 
   signIn(auth: Object): Observable<Object> {

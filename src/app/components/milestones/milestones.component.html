@@ -1,23 +1,33 @@
 <ion-list>
 
   <ion-searchbar mode="ios" placeholder="Buscar"></ion-searchbar>
-  <!--<ion-item class="item-search">
-    <ion-icon position="fixed" name="search"></ion-icon>&nbsp;&nbsp;
-    <ion-input></ion-input>
-  </ion-item>-->
 
   <ion-item-sliding *ngFor="let milestone of milestones">
-    <ion-item (click)="openDetails()">
+    <ion-item (click)="openDetails(milestone.id)">
       <ion-icon name="square" slot="start" class="status-{{milestone.idStatus}}"></ion-icon>
       <ion-label>
         <small>{{milestone.code}}</small>
         <h2>{{milestone.name}}</h2>
+        <small>{{milestone.owner.name}}</small>
       </ion-label>
-      <ion-button slot="end">
-        <ion-icon name="alarm" slot="end"></ion-icon>
-        <span>{{milestone.delay}}</span>
-      </ion-button>
+      <div slot="end">
+        <div style="text-align: center;">
+          <small>{{milestone.review.ended}} / {{milestone.review.all}}</small>
+        </div>
+        <ion-button>
+          <ion-icon name="alarm" slot="end"></ion-icon>
+          <span>{{milestone.review.delay}}</span>
+        </ion-button>
+      </div>
     </ion-item>
+    <ion-item-options>
+      <ion-item-option>
+        <ion-icon slot="top" name="call" class="swipe-menu-icon"></ion-icon>
+      </ion-item-option>
+      <ion-item-option>
+        <ion-icon slot="top" name="mail" class="swipe-menu-icon"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
   </ion-item-sliding>
 
 </ion-list>

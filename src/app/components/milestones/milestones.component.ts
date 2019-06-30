@@ -12,12 +12,14 @@ export class MilestonesComponent implements OnInit {
   @Input()
   milestones: Milestone[];
 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+      public navCtrl: NavController
+  ) { }
 
   ngOnInit() {}
 
-  openDetails() {
-    this.navCtrl.navigateForward('milestone');
+  openDetails(idMilestone) {
+    this.navCtrl.navigateForward('milestone/' + idMilestone);
   }
 
 }

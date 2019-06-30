@@ -12,13 +12,13 @@
   <app-tabbar></app-tabbar>
 
   <ion-toolbar mode="ios" class="subtoolbar">
-    <ion-buttons slot="start" (click)="changeRunbook()">
-      <ion-icon slot="icon-only" name="calendar" class="subtoolbar-icon"></ion-icon>
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="funnel" class="subtoolbar-icon"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end" (click)="openTimes()">
       <ion-icon slot="icon-only" name="information-circle" class="subtoolbar-icon"></ion-icon>
     </ion-buttons>
-    <ion-title>{{runbook.period}}</ion-title>
+    <ion-title (click)="changeRunbook()">{{runbook.name}}</ion-title>
   </ion-toolbar>
 
   <ion-grid class="grid-review" *ngIf="viewTimes">
