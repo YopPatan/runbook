@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController, NavController} from "@ionic/angular";
 import {RunbookService} from "../../services/runbook.service";
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginPage implements OnInit {
   auth = {username: '', password: ''};
 
   constructor(
+      private storage: Storage,
       public navCtrl: NavController,
       public alertController: AlertController,
       private runbookService: RunbookService
@@ -30,7 +32,9 @@ export class LoginPage implements OnInit {
 
     this.runbookService.signIn(this.auth).subscribe(data => {
       if (data['token']) {
-        this.navCtrl.navigateForward('runbook');
+        this.storage.set('token', data['token']).then(item => {
+          this.navCtrl.navigateForward('runbook');
+        });
       }
       else {
         alert.present();

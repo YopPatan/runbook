@@ -4,24 +4,40 @@ import {Observable} from "rxjs";
 import {Runbook} from "../models/runbook";
 import {Activity} from "../models/activity";
 import {Milestone} from "../models/milestone";
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RunbookService {
 
-  constructor(private http: HttpClient) {
-    //console.log('CONSTRUCTOR');
+  //token: string;
+
+  constructor(
+      private http: HttpClient,
+      private storage: Storage
+  ) {
+
+    /*
+    this.storage.get('token').then((val) => {
+      console.log('token', val);
+    });
+     */
+
   }
 
-  getRunbook(): Observable<Runbook> {
+  getToken(): Promise<String> {
+    return this.storage.get('token');
+  }
+
+  getRunbook(request): Observable<Runbook> {
     //return this.http.get<Runbook>('https://test-patan.firebaseio.com/runbook.json?print=pretty&format=export');
-    return this.http.post<Runbook>('http://localhost:8080/runbook/runbook', {});
+    return this.http.post<Runbook>('http://localhost:8080/runbook/runbook', request);
   }
 
-  getPending(): Observable<Activity[]> {
+  getPending(request): Observable<Activity[]> {
     //return this.http.get<Activity[]>('https://test-patan.firebaseio.com/pending.json?print=pretty&format=export');
-    return this.http.post<Activity[]>('http://localhost:8080/runbook/pending', {});
+    return this.http.post<Activity[]>('http://localhost:8080/runbook/pending', request);
   }
 
   getMilestone(request): Observable<Milestone> {

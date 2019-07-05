@@ -18,12 +18,14 @@ export class RunbookPage implements OnInit {
   viewTimes = false;
   runbook: Runbook;
   milestonesByDate: Milestone[];
+  currentYear = parseInt(moment().format("YYYY"));
+  currentMonth = parseInt(moment().format("MM"));
 
   months = ['Enero', 'Febreo', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  years = [2019, 2018, 2017];
+  years = Array.from(Array(3).keys()).map( i => this.currentYear - i);
 
-  framework = '';
-  selected = ['','',''];
+  //framework = '';
+  //selected = ['','',''];
 
   constructor(
       private runbookService: RunbookService,
@@ -31,9 +33,16 @@ export class RunbookPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.runbookService.getRunbook().subscribe(data => {
-      console.log(data);
-      this.runbook = data;
+    this.loadData(this.currentMonth, this.currentYear);
+  }
+
+  loadData(month, year) {
+    this.runbookService.getToken().then(val => {
+      let request = { token: val, month: month, year: year };
+      this.runbookService.getRunbook(request).subscribe(data => {
+        //console.log(data);
+        this.runbook = data;
+      });
     });
   }
 
@@ -66,28 +75,19 @@ export class RunbookPage implements OnInit {
       mode: 'ios',
       buttons: [
         { text: 'Cancelar', role: 'cancel' },
-        { text: 'Aceptar' }
+        { text: 'Aceptar',
+          handler: (value) => {
+            this.loadData(value.month.value, value.year.value);
+            //console.log(value);
+          } }
       ],
       columns: [
-        { name: 'month', options: this.months.map((item, i) => {return {text: item, value: i}}) },
-        { name: 'year', options: this.years.map((item, i) => {return {text: item.toString(), value: i}}) }
+        { name: 'month', options: this.months.map((v, i) => {return {text: v, value: i}}) },
+        { name: 'year', options: this.years.map((v, i) => {return {text: v.toString(), value: v}}) }
       ]
     };
     let picker = await this.pickerCtrl.create(opts);
     picker.present();
-    picker.onDidDismiss().then(data => {
-      console.log(data);
-      /*
-      let game = await picker.getColumn('game');
-      let cat = await picker.getColumn('category');
-      let rating = await picker.getColumn('rating');
-      this.selected = [
-        game.options[game.selectedIndex].text,
-        cat.options[cat.selectedIndex].text,
-        rating.options[rating.selectedIndex].text
-      ];
-       */
-    });
   }
 
 }
