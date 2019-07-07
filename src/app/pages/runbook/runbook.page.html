@@ -18,7 +18,7 @@
     <ion-buttons slot="end" (click)="openTimes()">
       <ion-icon slot="icon-only" name="information-circle" class="subtoolbar-icon"></ion-icon>
     </ion-buttons>
-    <ion-title (click)="changeRunbook()">{{runbook.name}}</ion-title>
+    <ion-title (click)="changeRunbook()">{{runbook.nombre}}</ion-title>
   </ion-toolbar>
 
   <ion-grid class="grid-review" *ngIf="viewTimes">
@@ -28,7 +28,7 @@
           <ion-card-header>
             <ion-card-subtitle>Atraso Actual (h)</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content><h1>{{runbook.currentDelay}}</h1></ion-card-content>
+          <ion-card-content><h1>{{runbook.tiempoRetraso}}</h1></ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col>
@@ -36,7 +36,7 @@
           <ion-card-header>
             <ion-card-subtitle>Estimación envío BR</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content><h1>{{runbook.estimateDate}}</h1></ion-card-content>
+          <ion-card-content><h1>{{runbook.fechaEstimada}}</h1></ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

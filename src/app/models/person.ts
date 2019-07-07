@@ -1,5 +1,6 @@
 export class Person {
     id: number;
-    name: number;
-    email: number;
+    nombre: string;
+    email: string;
+    telefono: string;
 }

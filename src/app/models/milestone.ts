@@ -4,11 +4,11 @@ import {Review} from "./review";
 
 export class Milestone {
     id: number;
-    idStatus: number;
-    name: string;
-    code: string;
-    date: string;
-    owner: Person;
-    review: Review;
-    activities: Activity[];
+    idEstado: number;
+    nombre: string;
+    codigo: string;
+    fecha: string;
+    responsable: Person;
+    resumen: Review;
+    actividades: Activity[];
 }

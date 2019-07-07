@@ -1,5 +1,5 @@
 export class Review {
     delay: string;
-    all: number;
-    ended: number;
+    todas: number;
+    finalizadas: number;
 }

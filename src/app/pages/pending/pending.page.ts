@@ -17,8 +17,8 @@ export class PendingPage implements OnInit {
 
   ngOnInit() {
     this.runbookService.getToken().then(val => {
-      let request = { token: val };
-      this.runbookService.getPending(request).subscribe(data => {
+      this.runbookService.setHeaders(val);
+      this.runbookService.getPending().subscribe(data => {
         console.log(data);
         this.activities = data;
       });

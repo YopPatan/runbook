@@ -4,24 +4,24 @@
 
   <ion-item-sliding *ngFor="let milestone of milestones">
     <ion-item (click)="openDetails(milestone.id)">
-      <ion-icon name="square" slot="start" class="status-{{milestone.idStatus}}"></ion-icon>
+      <ion-icon name="square" slot="start" class="status-{{milestone.idEstado}}"></ion-icon>
       <ion-label>
-        <small>{{milestone.code}}</small>
-        <h2>{{milestone.name}}</h2>
-        <small>{{milestone.owner.name}}</small>
+        <small>{{milestone.codigo}}</small>
+        <h2>{{milestone.nombre}}</h2>
+        <small>{{milestone.responsable.nombre}}</small>
       </ion-label>
       <div slot="end">
         <div style="text-align: center;">
-          <small>{{milestone.review.ended}} / {{milestone.review.all}}</small>
+          <small>{{milestone.resumen.finalizadas}} / {{milestone.resumen.todas}}</small>
         </div>
         <ion-button>
           <ion-icon name="alarm" slot="end"></ion-icon>
-          <span>{{milestone.review.delay}}</span>
+          <span>{{milestone.resumen.delay}}</span>
         </ion-button>
       </div>
     </ion-item>
     <ion-item-options>
-      <ion-item-option>
+      <ion-item-option (click)="callOwner(milestone.responsable.telefono)">
         <ion-icon slot="top" name="call" class="swipe-menu-icon"></ion-icon>
       </ion-item-option>
       <ion-item-option>

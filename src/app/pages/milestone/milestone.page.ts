@@ -22,8 +22,8 @@ export class MilestonePage implements OnInit {
   ngOnInit() {
     this.idMilestone = parseInt(this.route.snapshot.paramMap.get('id'));
     this.runbookService.getToken().then(val => {
-      let request = { token: val, idMilestone: this.idMilestone };
-      this.runbookService.getMilestone(request).subscribe(data => {
+      this.runbookService.setHeaders(val);
+      this.runbookService.getMilestone(this.idMilestone).subscribe(data => {
         //console.log(data);
         this.milestone = data;
       });

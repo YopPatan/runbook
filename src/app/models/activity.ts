@@ -1,10 +1,10 @@
 export class Activity {
     id: number;
-    idMilestone: number;
-    idPerson: number;
-    idStatus: number;
-    name: string;
-    description: string;
-    code: string;
+    idHito: number;
+    idPersona: number;
+    idEstado: number;
+    nombre: string;
+    descripcion: string;
+    codigo: string;
     delay: string;
 }

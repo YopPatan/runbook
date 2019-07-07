@@ -17,15 +17,8 @@ export class RunbookPage implements OnInit {
 
   viewTimes = false;
   runbook: Runbook;
+  runbooks: Runbook[];
   milestonesByDate: Milestone[];
-  currentYear = parseInt(moment().format("YYYY"));
-  currentMonth = parseInt(moment().format("MM"));
-
-  months = ['Enero', 'Febreo', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  years = Array.from(Array(3).keys()).map( i => this.currentYear - i);
-
-  //framework = '';
-  //selected = ['','',''];
 
   constructor(
       private runbookService: RunbookService,
@@ -33,16 +26,20 @@ export class RunbookPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadData(this.currentMonth, this.currentYear);
+    this.runbookService.getToken().then(val => {
+      this.runbookService.setHeaders(val);
+      this.runbookService.getRunbooks().subscribe(data => {
+        console.log(data);
+        this.runbooks = data;
+        this.loadData(data[0].id);
+      });
+    });
   }
 
-  loadData(month, year) {
-    this.runbookService.getToken().then(val => {
-      let request = { token: val, month: month, year: year };
-      this.runbookService.getRunbook(request).subscribe(data => {
-        //console.log(data);
-        this.runbook = data;
-      });
+  loadData(idRunbook) {
+    this.runbookService.getRunbook(idRunbook).subscribe(data => {
+      console.log(data);
+      this.runbook = data;
     });
   }
 
@@ -51,13 +48,13 @@ export class RunbookPage implements OnInit {
     let todayInit = moment().subtract(1, 'days');
     let todayEnd = moment().add(1, 'days');
     if (event.detail.value == 'today') {
-      this.milestonesByDate = this.runbook.milestones.filter(item => moment(item.date, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
+      this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
     }
     else if (event.detail.value == 'prev') {
-      this.milestonesByDate = this.runbook.milestones.filter(item => moment(item.date, "YYYY-MM-DD").isBefore(todayInit));
+      this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isBefore(todayInit));
     }
     else {
-      this.milestonesByDate = this.runbook.milestones.filter(item => moment(item.date, "YYYY-MM-DD").isAfter(todayEnd));
+      this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isAfter(todayEnd));
     }
   }
 
@@ -77,14 +74,12 @@ export class RunbookPage implements OnInit {
         { text: 'Cancelar', role: 'cancel' },
         { text: 'Aceptar',
           handler: (value) => {
-            this.loadData(value.month.value, value.year.value);
+            this.loadData(value.idRunbook.value);
             //console.log(value);
           } }
       ],
       columns: [
-        { name: 'month', options: this.months.map((v, i) => {return {text: v, value: i}}) },
-        { name: 'year', options: this.years.map((v, i) => {return {text: v.toString(), value: v}}) }
-      ]
+        { name: 'idRunbook', options: this.runbooks.map(item => {return {text: item.nombre, value: item.id}}) } ]
     };
     let picker = await this.pickerCtrl.create(opts);
     picker.present();

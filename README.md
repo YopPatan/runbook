@@ -23,6 +23,16 @@
 
 `npm install moment`
 
+Nuevo 2018-07-06
+
+`ionic cordova plugin add cordova-sqlite-storage`
+
+`npm install --save @ionic/storage`
+
+`ionic cordova plugin add call-number`
+
+`npm install @ionic-native/call-number`
+
 * Ejecutar aplicacion
 
 `ionic serve`

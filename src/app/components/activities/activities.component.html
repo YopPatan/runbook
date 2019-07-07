@@ -4,10 +4,10 @@
 
   <ion-item-sliding *ngFor="let activity of activities">
     <ion-item>
-      <ion-icon name="square" slot="start" class="status-{{activity.idStatus}}"></ion-icon>
+      <ion-icon name="square" slot="start" class="status-{{activity.idEstado}}"></ion-icon>
       <ion-label>
-        <small>{{activity.code}}</small>
-        <h2>{{activity.name}}</h2>
+        <small>{{activity.codigo}}</small>
+        <h2>{{activity.nombre}}</h2>
       </ion-label>
       <ion-button slot="end">
         <ion-icon name="alarm" slot="end"></ion-icon>

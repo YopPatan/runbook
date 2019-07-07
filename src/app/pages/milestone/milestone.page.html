@@ -10,12 +10,12 @@
 <ion-content *ngIf="milestone">
 
   <div class="subtitle-block">
-    <small>{{milestone.code}}</small>
-    <h2>{{milestone.name}}</h2>
+    <small>{{milestone.codigo}}</small>
+    <h2>{{milestone.nombre}}</h2>
   </div>
 
   <div *ngIf="milestone">
-    <app-activities [activities]="milestone.activities"></app-activities>
+    <app-activities [activities]="milestone.actividades"></app-activities>
   </div>
 
 </ion-content>
