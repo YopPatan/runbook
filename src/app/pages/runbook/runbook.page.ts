@@ -48,7 +48,7 @@ export class RunbookPage implements OnInit {
     let todayInit = moment().subtract(1, 'days');
     let todayEnd = moment().add(1, 'days');
     if (event.detail.value == 'today') {
-      this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
+      this.milestonesByDate = this.runbook.hitos.filter(item => (item.fecha == "") || moment(item.fecha, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
     }
     else if (event.detail.value == 'prev') {
       this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isBefore(todayInit));

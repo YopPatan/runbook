@@ -9,6 +9,6 @@ export class Milestone {
     codigo: string;
     fecha: string;
     responsable: Person;
-    resumen: Review;
+    avance: Review;
     actividades: Activity[];
 }

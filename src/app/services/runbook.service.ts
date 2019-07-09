@@ -29,14 +29,14 @@ export class RunbookService {
   }
 
   getRunbooks(): Observable<Runbook[]> {
-    return this.http.get<Runbook[]>('https://test-patan.firebaseio.com/runbooks.json?print=pretty&format=export', {headers: this.headers});
-    //return this.http.get<Runbook[]>('https://runbook.azurewebsites.net/api/runbook', {headers: this.headers});
+    //return this.http.get<Runbook[]>('https://test-patan.firebaseio.com/runbooks.json?print=pretty&format=export', {headers: this.headers});
+    return this.http.get<Runbook[]>('https://runbook.azurewebsites.net/api/runbook');
     //return this.http.get<Runbook[]>('http://localhost:8080/runbook/runbook', {headers: this.headers});
   }
 
   getRunbook(idRunbook): Observable<Runbook> {
-    return this.http.get<Runbook>('https://test-patan.firebaseio.com/runbook.json?print=pretty&format=export', {headers: this.headers});
-    //return this.http.get<Runbook>('https://runbook.azurewebsites.net/api/runbook/' + idRunbook, {headers: this.headers});
+    //return this.http.get<Runbook>('https://test-patan.firebaseio.com/runbook.json?print=pretty&format=export', {headers: this.headers});
+    return this.http.get<Runbook>('https://runbook.azurewebsites.net/api/runbook/' + idRunbook);
     //return this.http.get<Runbook>('http://localhost:8080/runbook/runbook/' + idRunbook, {headers: this.headers});
   }
 
