@@ -3,4 +3,5 @@ export class Person {
     nombre: string;
     email: string;
     telefono: string;
+    imagen: string;
 }

@@ -7,6 +7,7 @@ import {Runbook} from "../../models/runbook";
 import {PickerController} from "@ionic/angular";
 
 import { PickerOptions} from '@ionic/core';
+import {Person} from "../../models/person";
 
 @Component({
   selector: 'app-runbook',
@@ -19,6 +20,7 @@ export class RunbookPage implements OnInit {
   runbook: Runbook;
   runbooks: Runbook[];
   milestonesByDate: Milestone[];
+  imagesPerson: Person[];
 
   constructor(
       private runbookService: RunbookService,
@@ -26,11 +28,16 @@ export class RunbookPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.runbookService.getImages().then(val => {
+      this.imagesPerson = val;
+    });
     this.runbookService.getToken().then(val => {
       this.runbookService.setHeaders(val);
       this.runbookService.getRunbooks().subscribe(data => {
         console.log(data);
-        this.runbooks = data;
+        this.runbooks = data.sort((a, b) => {
+          return moment(a.periodo, "M-YYYY").isBefore(moment(b.periodo, "M-YYYY")) ? 1 : -1;
+        });
         this.loadData(data[0].id);
       });
     });
@@ -40,21 +47,22 @@ export class RunbookPage implements OnInit {
     this.runbookService.getRunbook(idRunbook).subscribe(data => {
       console.log(data);
       this.runbook = data;
+      this.changeTab(null);
     });
   }
 
-  changeDate(event) {
+  changeTab(event) {
     // console.log(event.detail.value);
     let todayInit = moment().subtract(1, 'days');
     let todayEnd = moment().add(1, 'days');
-    if (event.detail.value == 'today') {
-      this.milestonesByDate = this.runbook.hitos.filter(item => (item.fecha == "") || moment(item.fecha, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
-    }
-    else if (event.detail.value == 'prev') {
+    if (event != null && event.detail.value == 'prev') {
       this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isBefore(todayInit));
     }
-    else {
+    else if (event != null && event.detail.value == 'next') {
       this.milestonesByDate = this.runbook.hitos.filter(item => moment(item.fecha, "YYYY-MM-DD").isAfter(todayEnd));
+    }
+    else {
+      this.milestonesByDate = this.runbook.hitos.filter(item => (item.fecha == "") || moment(item.fecha, "YYYY-MM-DD").isBetween(todayInit, todayEnd));
     }
   }
 

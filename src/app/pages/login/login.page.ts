@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AlertController, NavController} from "@ionic/angular";
 import {RunbookService} from "../../services/runbook.service";
 import { Storage } from '@ionic/storage';
+import * as moment from "../runbook/runbook.page";
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,10 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.runbookService.getPersons().subscribe(data => {
+      console.log(data);
+      this.storage.set('images', data);
+    });
   }
 
   async signin() {

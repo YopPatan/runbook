@@ -5,6 +5,7 @@ import {Runbook} from "../models/runbook";
 import {Activity} from "../models/activity";
 import {Milestone} from "../models/milestone";
 import { Storage } from '@ionic/storage';
+import {Person} from "../models/person";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class RunbookService {
 
   setHeaders(token) {
     this.headers = new HttpHeaders({'Authorization': token});
+  }
+
+  getImages(): Promise<Person[]> {
+    return this.storage.get('images');
   }
 
   getToken(): Promise<String> {
@@ -48,6 +53,10 @@ export class RunbookService {
   getMilestone(idHito): Observable<Milestone> {
     return this.http.get<Milestone>('https://test-patan.firebaseio.com/milestone.json?print=pretty&format=export', {headers: this.headers});
     //return this.http.get<Milestone>('http://localhost:8080/runbook/milestone/' + idHito, {headers: this.headers});
+  }
+
+  getPersons(): Observable<Person> {
+    return this.http.get<Person>('http://localhost:8080/runbook/personas', {headers: this.headers});
   }
 
   signIn(auth: Object): Observable<Object> {

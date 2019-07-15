@@ -36,4 +36,8 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  logout() {
+    console.log("accion salir");
+  }
 }

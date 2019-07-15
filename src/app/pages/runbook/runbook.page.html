@@ -9,18 +9,17 @@
 
 <ion-content *ngIf="runbook">
 
-  <app-tabbar></app-tabbar>
-
-  <ion-toolbar mode="ios" class="subtoolbar">
+  <ion-toolbar mode="ios" class="subtoolbar" style="position: fixed !important;">
     <ion-buttons slot="start">
       <ion-icon slot="icon-only" name="funnel" class="subtoolbar-icon"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end" (click)="openTimes()">
       <ion-icon slot="icon-only" name="information-circle" class="subtoolbar-icon"></ion-icon>
     </ion-buttons>
-    <ion-title (click)="changeRunbook()">{{runbook.nombre}}</ion-title>
+    <ion-title (click)="changeRunbook()">Hitos: {{runbook.nombre}}</ion-title>
   </ion-toolbar>
 
+  <div style="margin-top: 48px !important;">
   <ion-grid class="grid-review" *ngIf="viewTimes">
     <ion-row>
       <ion-col>
@@ -42,19 +41,22 @@
     </ion-row>
   </ion-grid>
 
-  <ion-segment (ionChange)="changeDate($event)">
+  <ion-segment (ionChange)="changeTab($event)">
     <ion-segment-button value="prev">
-      <ion-label>Anteriores</ion-label>
+      <ion-label>Finalizados</ion-label>
     </ion-segment-button>
     <ion-segment-button value="today" checked>
-      <ion-label>Hoy</ion-label>
+      <ion-label>Activos</ion-label>
     </ion-segment-button>
     <ion-segment-button value="next">
-      <ion-label>Siguientes</ion-label>
+      <ion-label>Próximos</ion-label>
     </ion-segment-button>
   </ion-segment>
+  </div>
 
   <app-milestones [milestones]="milestonesByDate"></app-milestones>
 
 
 </ion-content>
+
+<app-tabbar></app-tabbar>

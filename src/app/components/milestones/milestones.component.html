@@ -6,9 +6,8 @@
     <ion-item (click)="openDetails(milestone.id)">
       <ion-icon name="square" slot="start" class="status-{{milestone.idEstado}}"></ion-icon>
       <ion-label>
-        <small>{{milestone.codigo}}</small>
+        <small>{{milestone.codigo}} - {{milestone.responsable.nombre}}</small>
         <h2>{{milestone.nombre}}</h2>
-        <small>{{milestone.responsable.nombre}}</small>
       </ion-label>
       <div slot="end">
         <div style="text-align: center;">
