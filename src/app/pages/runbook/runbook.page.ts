@@ -29,6 +29,7 @@ export class RunbookPage implements OnInit {
 
   ngOnInit() {
     this.runbookService.getImages().then(val => {
+      console.log(val);
       this.imagesPerson = val;
     });
     this.runbookService.getToken().then(val => {
